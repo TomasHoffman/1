@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas Hoffman Registration</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1 style="color: #2c3e50;">Thomas Hoffman Registration Form</h1>
+        <form id="registrationForm" action="https://formspree.io/f/xvoenpgb" method="POST">
+            <label for="firstName">First Name:</label>
+            <input type="text" id="firstName" name="First Name" required>
+
+            <label for="lastName">Last Name:</label>
+            <input type="text" id="lastName" name="Last Name" required>
+
+            <label for="email">Email Address:</label>
+            <input type="email" id="email" name="Email" required>
+
+            <label for="phone">Phone Number:</label>
+            <input type="tel" id="phone" name="Phone" required>
+
+            <label for="birthday">Birthday:</label>
+            <input type="date" id="birthday" name="Birthday" required>
+
+            <label for="country">Country:</label>
+            <select id="country" name="Country" required>
+                <option value="" disabled selected>Select your country</option>
+                <option value="USA">United States</option>
+                <option value="CAN">Canada</option>
+                <option value="GBR">United Kingdom</option>
+                <option value="DEU">Germany</option>
+                <option value="FRA">France</option>
+                <!-- Add more options as needed -->
+                <option value="IND">India</option>
+                <option value="AUS">Australia</option>
+                <option value="JPN">Japan</option>
+                <option value="BRA">Brazil</option>
+                <option value="MEX">Mexico</option>
+            </select>
+
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="Comment" rows="4"></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+
+    <script>
+        // Basic form validation using JavaScript
+        document.getElementById('registrationForm').addEventListener('submit', function(event) {
+            var isValid = true;
+            var email = document.getElementById('email').value;
+            var phone = document.getElementById('phone').value;
+
+            // Simple email validation
+            if (!isValidEmail(email)) {
+                isValid = false;
+                alert('Please enter a valid email address.');
+            }
+
+            // Simple phone number validation (numeric check)
+            if (!isNumeric(phone)) {
+                isValid = false;
+                alert('Please enter a valid phone number.');
+            }
+
+            // Prevent form submission if validation fails
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+
+        // Function to validate email format
+        function isValidEmail(email) {
+            var re = /\S+@\S+\.\S+/;
+            return re.test(email);
+        }
+
+        // Function to check if a string is numeric
+        function isNumeric(str) {
+            return /^\d+$/.test(str);
+        }
+    </script>
+</body>
+</html>
