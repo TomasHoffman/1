@@ -3,86 +3,100 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Thomas Hoffman Registration</title>
+    <title>Registration - T&H Consult</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="container">
-        <h1 style="color: #2c3e50;">Thomas Hoffman Registration Form</h1>
-        <form id="registrationForm" action="https://formspree.io/f/xvoenpgb" method="POST">
-            <label for="firstName">First Name:</label>
-            <input type="text" id="firstName" name="First Name" required>
+        <div class="form-container">
+            <h2>Register for T&H Consult</h2>
+            <form id="registrationForm" action="https://formspree.io/f/xvoenpgb" method="post">
+                <div class="form-group">
+                    <label for="name">Name <span class="required">*</span></label>
+                    <input type="text" id="name" name="name" required>
+                </div>
 
-            <label for="lastName">Last Name:</label>
-            <input type="text" id="lastName" name="Last Name" required>
+                <div class="form-group">
+                    <label for="lastName">Last Name <span class="required">*</span></label>
+                    <input type="text" id="lastName" name="lastName" required>
+                </div>
 
-            <label for="email">Email Address:</label>
-            <input type="email" id="email" name="Email" required>
+                <div class="form-group">
+                    <label for="email">Email <span class="required">*</span></label>
+                    <input type="email" id="email" name="email" required>
+                </div>
 
-            <label for="phone">Phone Number:</label>
-            <input type="tel" id="phone" name="Phone" required>
+                <div class="form-group">
+                    <label for="phone">Phone Number <span class="required">*</span></label>
+                    <input type="tel" id="phone" name="phone" required>
+                </div>
 
-            <label for="birthday">Birthday:</label>
-            <input type="date" id="birthday" name="Birthday" required>
+                <div class="form-group">
+                    <div class="birthday-container">
+                        <label for="birthday">Birthday <span class="required">*</span></label>
+                        <div class="birthday-inputs">
+                            <input type="number" id="birthday-day" name="birthday-day" placeholder="DD" min="1" max="31" required>
+                            <select id="birthday-month" name="birthday-month" required>
+                                <option value="" disabled selected>MM</option>
+                                <option value="01">January</option>
+                                <option value="02">February</option>
+                                <option value="03">March</option>
+                                <option value="04">April</option>
+                                <option value="05">May</option>
+                                <option value="06">June</option>
+                                <option value="07">July</option>
+                                <option value="08">August</option>
+                                <option value="09">September</option>
+                                <option value="10">October</option>
+                                <option value="11">November</option>
+                                <option value="12">December</option>
+                            </select>
+                            <input type="number" id="birthday-year" name="birthday-year" placeholder="YYYY" min="1900" max="2024" required>
+                        </div>
+                    </div>
+                </div>
 
-            <label for="country">Country:</label>
-            <select id="country" name="Country" required>
-                <option value="" disabled selected>Select your country</option>
-                <option value="USA">United States</option>
-                <option value="CAN">Canada</option>
-                <option value="GBR">United Kingdom</option>
-                <option value="DEU">Germany</option>
-                <option value="FRA">France</option>
-                <!-- Add more options as needed -->
-                <option value="IND">India</option>
-                <option value="AUS">Australia</option>
-                <option value="JPN">Japan</option>
-                <option value="BRA">Brazil</option>
-                <option value="MEX">Mexico</option>
-            </select>
+                <div class="form-group">
+                    <label for="country">Country <span class="required">*</span></label>
+                    <input list="countries" id="country" name="country" required>
+                    <datalist id="countries">
+                        <option value="USA">
+                        <option value="Canada">
+                        <option value="UK">
+                        <option value="Australia">
+                        <option value="Germany">
+                        <option value="France">
+                        <option value="Italy">
+                        <option value="Spain">
+                        <option value="Netherlands">
+                        <option value="Belgium">
+                        <option value="Sweden">
+                        <option value="Norway">
+                        <option value="Denmark">
+                        <option value="Switzerland">
+                        <option value="Austria">
+                        <!-- Add more countries as needed -->
+                    </datalist>
+                </div>
 
-            <label for="comment">Comment:</label>
-            <textarea id="comment" name="Comment" rows="4"></textarea>
+                <div class="form-group">
+                    <label for="idCard">ID Card Number</label>
+                    <input type="text" id="idCard" name="idCard">
+                </div>
 
-            <button type="submit">Submit</button>
-        </form>
+                <div class="form-group">
+                    <label for="comments">How did it happen!</label>
+                    <textarea id="comments" name="comments" maxlength="500" rows="4"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" id="submitBtn">Register</button>
+                </div>
+            </form>
+        </div>
     </div>
 
-    <script>
-        // Basic form validation using JavaScript
-        document.getElementById('registrationForm').addEventListener('submit', function(event) {
-            var isValid = true;
-            var email = document.getElementById('email').value;
-            var phone = document.getElementById('phone').value;
-
-            // Simple email validation
-            if (!isValidEmail(email)) {
-                isValid = false;
-                alert('Please enter a valid email address.');
-            }
-
-            // Simple phone number validation (numeric check)
-            if (!isNumeric(phone)) {
-                isValid = false;
-                alert('Please enter a valid phone number.');
-            }
-
-            // Prevent form submission if validation fails
-            if (!isValid) {
-                event.preventDefault();
-            }
-        });
-
-        // Function to validate email format
-        function isValidEmail(email) {
-            var re = /\S+@\S+\.\S+/;
-            return re.test(email);
-        }
-
-        // Function to check if a string is numeric
-        function isNumeric(str) {
-            return /^\d+$/.test(str);
-        }
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
+
